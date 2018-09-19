@@ -1,6 +1,4 @@
-﻿using System.Runtime.Remoting.Messaging;
-
-namespace ZeroMQ
+﻿namespace ZeroMQ
 {
 	using System;
 	using System.Collections.Generic;
