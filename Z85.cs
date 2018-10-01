@@ -26,7 +26,27 @@ namespace ZeroMQ
 			}
 		}
 
-		public static byte[] Encode(byte[] decoded)
+	    public static void CurvePublic(out byte[] publicKey, byte[] secretKey)
+	    {
+	        var data = GCHandle.Alloc(secretKey, GCHandleType.Pinned);
+
+            const int destLen = 40;
+	        using (var publicKeyData = DispoIntPtr.Alloc(destLen + 1))
+	        {
+	            if (0 != zmq.curve_keypair(publicKeyData, data.AddrOfPinnedObject()))
+	            {
+                    data.Free();
+	                throw new InvalidOperationException();
+	            }
+
+                data.Free();
+
+	            publicKey = new byte[destLen];
+	            Marshal.Copy(publicKeyData, publicKey, 0, destLen);
+	        }
+	    }
+
+        public static byte[] Encode(byte[] decoded)
 		{
 			int dataLen = decoded.Length;
 			if (dataLen % 4 > 0)

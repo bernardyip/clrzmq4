@@ -182,7 +182,10 @@
 		[DllImport(LibraryName, EntryPoint = "zmq_curve_keypair", CallingConvention = CCCdecl)]
 		public static extern Int32 curve_keypair(IntPtr z85_public_key, IntPtr z85_secret_key);
 
-		[DllImport(LibraryName, EntryPoint = "zmq_z85_encode", CallingConvention = CCCdecl)]
+	    [DllImport(LibraryName, EntryPoint = "zmq_curve_public", CallingConvention = CCCdecl)]
+	    public static extern Int32 curve_public(IntPtr z85_public_key, IntPtr z85_secret_key);
+        
+        [DllImport(LibraryName, EntryPoint = "zmq_z85_encode", CallingConvention = CCCdecl)]
 		public static extern IntPtr z85_encode(IntPtr dest, IntPtr data, Int32 size);
 
 		[DllImport(LibraryName, EntryPoint = "zmq_z85_decode", CallingConvention = CCCdecl)]
