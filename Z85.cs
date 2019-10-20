@@ -33,7 +33,7 @@ namespace ZeroMQ
             const int destLen = 40;
 	        using (var publicKeyData = DispoIntPtr.Alloc(destLen + 1))
 	        {
-	            if (0 != zmq.curve_keypair(publicKeyData, data.AddrOfPinnedObject()))
+	            if (0 != zmq.curve_public(publicKeyData, data.AddrOfPinnedObject()))
 	            {
                     data.Free();
 	                throw new InvalidOperationException();
