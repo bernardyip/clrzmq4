@@ -17,7 +17,7 @@ namespace ZeroMQ
 
         internal static class Code
 		{
-			static Code() 
+			static Code()
 			{
 				Platform.SetupImplementation(typeof(Code));
 			}
@@ -118,7 +118,7 @@ namespace ZeroMQ
 
             internal static class MacOSX
             {
-                public static readonly int 
+                public static readonly int
                     EAGAIN = 35,
 					EINPROGRESS = 36,
                     ENOTSOCK = 38,
@@ -161,15 +161,9 @@ namespace ZeroMQ
 			: base(errno)
 		{ }
 
-		public static new ZError None
-		{
-			get
-			{
-				return default(ZError); // null
-			}
-		}
+		public new static ZError None => default; // null
 
-		public static readonly ZError
+        public static ZError
 			// DEFAULT = new ZmqError(0),
 			EPERM,
 			ENOENT,
